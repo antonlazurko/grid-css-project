@@ -60,5 +60,24 @@ gulp.task('images', function () {
         .pipe(imagemin())
         .pipe(gulp.dest("dist/img"));
 });
+gulp.task('build', function () {
+    // Copy HTML files to the production directory
+    gulp.src('src/*.html')
+      .pipe(gulp.dest('dist'));
+
+    // Minify CSS files and copy them to the production directory
+    gulp.src('src/css/*.css')
+      .pipe(minifyCSS())
+      .pipe(gulp.dest('dist/css'));
+
+    // Minify JavaScript files and copy them to the production directory
+    // gulp.src('src/js/*.js')
+    //   .pipe(minifyJS())
+    //   .pipe(gulp.dest('dist/js'));
+
+    // Perform other build tasks as needed
+
+    return Promise.resolve();
+  });
 
 gulp.task('default', gulp.parallel('watch', 'server', 'styles', 'scripts', 'fonts', 'icons', 'html', 'images'));
