@@ -1,5 +1,6 @@
 const gulp        = require('gulp');
 const browserSync = require('browser-sync');
+const minifyCSS = require('gulp-clean-css');
 const sass        = require('gulp-sass')(require('sass'));
 const cleanCSS = require('gulp-clean-css');
 const autoprefixer = require('gulp-autoprefixer');
