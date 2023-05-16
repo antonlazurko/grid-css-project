@@ -62,21 +62,28 @@ gulp.task('images', function () {
         .pipe(gulp.dest("dist/img"));
 });
 gulp.task('build', function () {
+    gulp.src("src/sass/**/*.+(scss|sass)")
+        .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
+        .pipe(rename({suffix: '.min', prefix: ''}))
+        .pipe(autoprefixer())
+        .pipe(cleanCSS({compatibility: 'ie8'}))
+        .pipe(gulp.dest("dist/css"))
+        .pipe(browserSync.stream());
     // Copy HTML files to the production directory
-    gulp.src('src/*.html')
-      .pipe(gulp.dest('dist'));
+    gulp.src("src/*.html")
+        .pipe(htmlmin({ collapseWhitespace: true }))
+        .pipe(gulp.dest("dist/"));
+    gulp.src("src/js/**/*.js")
+        .pipe(gulp.dest("dist/js"));
 
     // Minify CSS files and copy them to the production directory
     gulp.src('src/css/*.css')
-      .pipe(minifyCSS())
-      .pipe(gulp.dest('dist/css'));
-
-    // Minify JavaScript files and copy them to the production directory
-    // gulp.src('src/js/*.js')
-    //   .pipe(minifyJS())
-    //   .pipe(gulp.dest('dist/js'));
-
-    // Perform other build tasks as needed
+        .pipe(minifyCSS())
+        .pipe(gulp.dest('dist/css'));
+    gulp.src("src/fonts/**/*")
+        .pipe(gulp.dest("dist/fonts"));
+    gulp.src("src/icons/**/*")
+        .pipe(gulp.dest("dist/icons"));
 
     return Promise.resolve();
   });
