@@ -1,6 +1,36 @@
 .header
     background-color: $color-blue-dark
     grid-column: full-start / col-end 6
+    padding: 5rem 0 5rem 6rem
+    background-image: url(../img/hero.png)
+    display: grid
+    grid-template-rows: 1fr min-content minmax(10rem, min-content) 1fr
+    &__btn
+        align-self: start
+        justify-self: start
+    &__line-text
+        font-size: 1.6rem
+        font-weight: 700
+        color: $color-gray-dark
+        display: grid
+        grid-template-columns: 1fr max-content 1fr
+        grid-column-gap: 2rem
+        align-items: center
+        margin-bottom: 1rem
+        &::before, &::after
+            content: ''
+            height: .1rem
+            display: block
+            background-color: $color-green-dark
+    &__img
+        display: grid
+        grid-template-columns: repeat(4, 1fr)
+        grid-gap: 2rem
+        justify-items: center
+        filter: brightness(70%)
+
+    &__img img
+        height: 2.5rem
 .logo
     display: block
     margin-bottom: 8rem
