@@ -84,6 +84,9 @@ gulp.task('build', function () {
         .pipe(gulp.dest("dist/fonts"));
     gulp.src("src/icons/**/*")
         .pipe(gulp.dest("dist/icons"));
+    gulp.src("src/img/**/*")
+        .pipe(imagemin())
+        .pipe(gulp.dest("dist/img"));
 
     return Promise.resolve();
   });
