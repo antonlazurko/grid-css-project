@@ -5,6 +5,9 @@
     background-image: url(../img/hero.png)
     display: grid
     grid-template-rows: 1fr min-content minmax(10rem, min-content) 1fr
+    @include respond(tab-port)
+        grid-column: full-start / full-end
+
     &__btn
         align-self: start
         justify-self: start

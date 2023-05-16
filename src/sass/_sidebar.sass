@@ -5,6 +5,12 @@
     display: flex
     justify-content: center
     padding-top: 3.7rem
+    @include respond(tab-land)
+        grid-column: 1 / -1
+        grid-row: 1 / 2
+        justify-content: end
+        align-items: center
+        padding: 0 4rem 0 0
 .hamburger
     cursor: pointer
     border: none

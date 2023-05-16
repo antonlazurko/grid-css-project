@@ -6,6 +6,8 @@
     grid-template-columns: repeat(auto-fit, minmax(28rem, 1fr))
     grid-gap: 3rem 4rem
     align-items: start
+    @include respond(phone)
+        padding: s5rem 0
 .feature
     display: grid
     grid-template-columns: min-content 1fr
